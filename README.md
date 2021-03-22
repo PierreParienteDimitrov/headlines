@@ -15,6 +15,10 @@ This boilerplate can be used to build landing pages with a simple contact form t
 npm install
 ```
 
+## Mailchimp Connection
+
+Open the .env file and add your MAILCHIMP_API_KEY and MAILCHIMP_LIST_ID 
+
 ## Getting Started
 
 First, run the development server:
