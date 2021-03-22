@@ -10,9 +10,6 @@ const Layout = ({ children }) => {
 			</Head>
 			<Nav />
 			{children}
-			<div>
-				<h1>This is the footer</h1>
-			</div>
 		</div>
 	);
 };
