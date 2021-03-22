@@ -1,4 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js, Tailwind, Sass and Mailchimp connection boilerplate
+
+This is my boilerplate for any new website that uses the following techologies:
+1. Next.js
+2. Tailwind
+3. Sass
+
+In addition, this boilerplate includes the code to send the data from a form to mailchimp. 
+
+This boilerplate can be used to build landing pages with a simple contact form to collect emails and leads. 
+
+## Installation
+
+```bash
+npm install
+```
 
 ## Getting Started
 
@@ -9,6 +24,12 @@ npm run dev
 # or
 yarn dev
 ```
+
+# About Next.js
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
