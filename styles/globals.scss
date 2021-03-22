@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+$primary-font: halyard-display, sans-serif;
+$secondary-font: utopia-std-display, serif;
+
+body {
+	font-family: $primary-font;
+}
