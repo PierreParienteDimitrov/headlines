@@ -3,3 +3,27 @@
 @tailwind utilities;
 
 $primary-font: halyard-display, sans-serif;
+
+@mixin media-md {
+	@media screen and (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin media-lg {
+	@media screen and (min-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin media-xl {
+	@media screen and (min-width: 1280) {
+		@content;
+	}
+}
+
+@mixin media-2xl {
+	@media screen and (min-width: 1536) {
+		@content;
+	}
+}
