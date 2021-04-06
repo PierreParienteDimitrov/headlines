@@ -8,18 +8,23 @@ import ContainerFluid from '../components/layouts/ContainerFluid';
 const Browse = () => {
 	const [query, setQuery] = useState('');
 	const [articles, setArticles] = useState(null);
-	const [show, setShow] = useState(false);
+	const [alert, setAlert] = useState(false);
 
 	const onChange = (e) => {
 		e.preventDefault();
 		setQuery(e.target.value);
-		setShow(true);
 	};
 
 	const onSubmit = (e) => {
 		e.preventDefault();
 		setArticles(null);
-		getArticles(query);
+
+		if (!query) {
+			setAlert(true);
+		} else {
+			setAlert(false);
+			getArticles(query);
+		}
 	};
 
 	const getArticles = async (query) => {
@@ -30,6 +35,8 @@ const Browse = () => {
 			};
 
 			const res = await axios.request(options);
+			// console.log('---------------------------');
+			// console.log(res);
 			const arr = res.data.response.docs;
 			setArticles(arr);
 		} catch (err) {
@@ -51,13 +58,19 @@ const Browse = () => {
 					<input
 						type='text'
 						name='search'
-						placeholder='Search a Github user'
+						placeholder='Search articles'
 						value={query}
 						onChange={onChange}
 						className='w-full focus:outline-none'
 					/>
-					<input type='submit' placeholder='submit' />
+					<input type='submit' placeholder='submit' className='cursor-pointer' />
 				</form>
+
+				{alert && (
+					<div>
+						<p>Please enter search</p>
+					</div>
+				)}
 			</Container>
 
 			<ContainerFluid>
@@ -73,18 +86,20 @@ const Browse = () => {
 							}
 
 							return (
-								<div key={index} className='w-full h-screen py-6 relative'>
+								<div key={index} className='w-full py-6'>
 									{picture && (
-										<img
-											src={`https://www.nytimes.com/${picture}`}
-											alt='Picture of the author'
-											width={500}
-											height={500}
-											className='h-full w-full absolute top-0 left-0 object-cover -z-10'
-										/>
+										<a href={article.web_url} target='blank' className='cursor-pointer'>
+											<img
+												src={`https://www.nytimes.com/${picture}`}
+												alt='Picture of the author'
+												width={500}
+												height={500}
+												className='object-cover -z-10'
+											/>
+										</a>
 									)}
 
-									<div className='z-10 absolute bottom-0'>
+									<div className='z-10'>
 										<h3>{article.headline.main}</h3>
 										<p>{article.abstract}</p>
 										<a href={article.web_url} target='blank'>
