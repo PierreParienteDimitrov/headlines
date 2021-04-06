@@ -27,6 +27,12 @@ const Browse = () => {
 		}
 	};
 
+	const clearArticles = (e) => {
+		e.preventDefault();
+		setArticles(null);
+		setQuery('');
+	};
+
 	const getArticles = async (query) => {
 		try {
 			const options = {
@@ -64,8 +70,9 @@ const Browse = () => {
 						className='w-full focus:outline-none'
 					/>
 					<input type='submit' placeholder='submit' className='cursor-pointer' />
-				</form>
 
+					{articles && <button onClick={clearArticles}>Clear Search</button>}
+				</form>
 				{alert && (
 					<div>
 						<p>Please enter search</p>
