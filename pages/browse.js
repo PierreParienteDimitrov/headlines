@@ -8,7 +8,7 @@ import Spinner from '../components/spinner/Spinner';
 
 const Browse = () => {
 	const [query, setQuery] = useState('');
-	const [articles, setArticles] = useState(null);
+	const [articles, setArticles] = useState([]);
 	const [alert, setAlert] = useState(false);
 	const [loading, setLoading] = useState(false);
 
@@ -19,7 +19,7 @@ const Browse = () => {
 
 	const onSubmit = (e) => {
 		e.preventDefault();
-		setArticles(null);
+		setArticles([]);
 
 		if (!query) {
 			setAlert(true);
@@ -32,8 +32,9 @@ const Browse = () => {
 
 	const clearArticles = (e) => {
 		e.preventDefault();
-		setArticles(null);
+		setArticles([]);
 		setQuery('');
+		setAlert(false);
 	};
 
 	const getArticles = async (query) => {
@@ -76,7 +77,9 @@ const Browse = () => {
 						/>
 						<input type='submit' placeholder='submit' className='cursor-pointer' />
 
-						{articles && <button onClick={clearArticles}>Clear Search</button>}
+						{articles.length > 0 && (
+							<button onClick={clearArticles}>Clear Search</button>
+						)}
 					</form>
 					{alert && (
 						<div>
@@ -87,40 +90,39 @@ const Browse = () => {
 
 				<ContainerFluid>
 					<article>
-						{articles &&
-							articles.map((article, index) => {
-								console.log(article);
-								let picture;
-								if (article.multimedia.length > 0) {
-									picture = article.multimedia[8].url;
-								} else {
-									return;
-								}
+						{articles.map((article, index) => {
+							console.log(article);
+							let picture;
+							if (article.multimedia.length > 0) {
+								picture = article.multimedia[8].url;
+							} else {
+								return;
+							}
 
-								return (
-									<div key={index} className='w-full py-6'>
-										{picture && (
-											<a href={article.web_url} target='blank' className='cursor-pointer'>
-												<img
-													src={`https://www.nytimes.com/${picture}`}
-													alt='Picture of the author'
-													width={500}
-													height={500}
-													className='object-cover -z-10'
-												/>
-											</a>
-										)}
+							return (
+								<div key={index} className='w-full py-6'>
+									{picture && (
+										<a href={article.web_url} target='blank' className='cursor-pointer'>
+											<img
+												src={`https://www.nytimes.com/${picture}`}
+												alt='Picture of the author'
+												width={500}
+												height={500}
+												className='object-cover -z-10'
+											/>
+										</a>
+									)}
 
-										<div className='z-10'>
-											<h3>{article.headline.main}</h3>
-											<p>{article.abstract}</p>
-											<a href={article.web_url} target='blank'>
-												LINK
-											</a>
-										</div>
+									<div className='z-10'>
+										<h3>{article.headline.main}</h3>
+										<p>{article.abstract}</p>
+										<a href={article.web_url} target='blank'>
+											LINK
+										</a>
 									</div>
-								);
-							})}
+								</div>
+							);
+						})}
 					</article>
 				</ContainerFluid>
 			</div>
