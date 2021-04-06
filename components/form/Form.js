@@ -6,9 +6,16 @@ import { FiSearch } from 'react-icons/fi';
 
 const Form = () => {
 	const articleContext = useContext(ArticlesContext);
-	console.log('--------');
-	console.log(articleContext);
-	const { articles, getArticles } = articleContext;
+	// console.log('--------');
+	// console.log(articleContext);
+	const {
+		articles,
+		alert,
+		getArticles,
+		setAlert,
+		removeAlert,
+		clearArticles,
+	} = articleContext;
 
 	const [query, setQuery] = useState('');
 
@@ -21,16 +28,20 @@ const Form = () => {
 	// onSubmit
 	const onSubmit = (e) => {
 		e.preventDefault();
-		getArticles(query);
-		// console.log('------------' + articles);
 
-		// if (!query) {
-		// 	setAlert(true);
-		// } else {
-		// 	setAlert(false);
-		// 	// setLoading(true);
-		// 	getArticles(query);
-		// }
+		if (!query) {
+			setAlert();
+		} else {
+			removeAlert();
+			// setLoading(true);
+			getArticles(query);
+		}
+	};
+
+	// clear articles
+	const onClick = () => {
+		setQuery('');
+		clearArticles();
 	};
 
 	return (
@@ -54,52 +65,51 @@ const Form = () => {
 					/>
 					<input type='submit' placeholder='submit' className='cursor-pointer' />
 
-					{/* {articles.length > 0 && (
-                        <button onClick={clearArticles}>Clear Search</button>
-                    )} */}
+					{articles.length > 0 && <button onClick={onClick}>Clear Search</button>}
 				</form>
-				{/* {alert && (
+				{alert && (
 					<div>
 						<p>Please enter search</p>
 					</div>
-				)} */}
+				)}
 			</Container>
 
 			<ContainerFluid>
 				<article>
-					{articles.map((article, index) => {
-						console.log(article);
-						let picture;
-						if (article.multimedia.length > 0) {
-							picture = article.multimedia[8].url;
-						} else {
-							return;
-						}
+					{articles &&
+						articles.map((article, index) => {
+							console.log(article);
+							let picture;
+							if (article.multimedia.length > 0) {
+								picture = article.multimedia[0].url;
+							} else {
+								return;
+							}
 
-						return (
-							<div key={index} className='w-full py-6'>
-								{picture && (
-									<a href={article.web_url} target='blank' className='cursor-pointer'>
-										<img
-											src={`https://www.nytimes.com/${picture}`}
-											alt='Picture of the author'
-											width={500}
-											height={500}
-											className='object-cover -z-10'
-										/>
-									</a>
-								)}
+							return (
+								<div key={index} className='w-full py-6'>
+									{picture && (
+										<a href={article.web_url} target='blank' className='cursor-pointer'>
+											<img
+												src={`https://www.nytimes.com/${picture}`}
+												alt='Picture of the author'
+												width={500}
+												height={500}
+												className='object-cover -z-10'
+											/>
+										</a>
+									)}
 
-								<div className='z-10'>
-									<h3>{article.headline.main}</h3>
-									<p>{article.abstract}</p>
-									<a href={article.web_url} target='blank'>
-										LINK
-									</a>
+									<div className='z-10'>
+										<h3>{article.headline.main}</h3>
+										<p>{article.abstract}</p>
+										<a href={article.web_url} target='blank'>
+											LINK
+										</a>
+									</div>
 								</div>
-							</div>
-						);
-					})}
+							);
+						})}
 				</article>
 			</ContainerFluid>
 		</div>

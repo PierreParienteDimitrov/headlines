@@ -2,7 +2,13 @@ import React, { useReducer, useState } from 'react';
 import axios from 'axios';
 import { ArticlesContext } from './articlesContext';
 import { ArticlesReducer } from './articlesReducer';
-import { SEARCH_ARTICLES, CLEAR_ARTICLES, SET_LOADING } from '../types';
+import {
+	SEARCH_ARTICLES,
+	CLEAR_ARTICLES,
+	SET_LOADING,
+	REMOVE_ALERT,
+	SET_ALERT,
+} from '../types';
 
 const ArticlesState = (props) => {
 	const initialState = {
@@ -23,6 +29,7 @@ const ArticlesState = (props) => {
 			};
 
 			const res = await axios.request(options);
+			console.log(res.data.response.docs);
 
 			dispatch({ type: SEARCH_ARTICLES, payload: res.data.response.docs });
 		} catch (err) {
@@ -30,32 +37,28 @@ const ArticlesState = (props) => {
 		}
 	};
 
-	// // Clear Articles
+	// Clear Articles
+	const clearArticles = () => dispatch({ type: CLEAR_ARTICLES, payload: [] });
 
-	// // Set Alert
+	// Set Alert
+	const setAlert = () => dispatch({ type: SET_ALERT });
+
+	// Remove Alert
+	const removeAlert = () => dispatch({ type: REMOVE_ALERT });
 
 	// Set Loading
 	const setLoading = () => dispatch({ type: SET_LOADING });
 
-	console.log(state);
-
 	return (
-		// <ArticlesContext.Provider
-		// 	value={{
-		// 		articles: [],
-		// 		loading: false,
-		// 		// getArticles,
-		// 	}}
-		// >
-		// 	{props.children}
-		// </ArticlesContext.Provider>
-
 		<ArticlesContext.Provider
 			value={{
 				articles: state.articles,
-				loading: state.false,
-				alert: state.false,
+				loading: state.loading,
+				alert: state.alert,
 				getArticles,
+				setAlert,
+				removeAlert,
+				clearArticles,
 			}}
 		>
 			{props.children}
