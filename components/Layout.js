@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Nav from './Nav';
 
 const Layout = ({ children }) => {
 	return (
@@ -8,7 +7,6 @@ const Layout = ({ children }) => {
 				<title>Create Next App</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			{/* <Nav /> */}
 			{children}
 		</div>
 	);
