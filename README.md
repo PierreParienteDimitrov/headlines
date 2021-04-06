@@ -1,3 +1,6 @@
+# Headlines
+[Link to deployed app](https://headlinesppd.herokuapp.com/browse)
+
 # Next.js, Tailwind, Sass and Mailchimp connection boilerplate
 
 This is my boilerplate for any new website that uses the following techologies:
