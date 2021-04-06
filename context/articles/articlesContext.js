@@ -1,5 +1,3 @@
-import { userContext } from 'react';
+import { createContext } from 'react';
 
-const articlesContext = createContext();
-
-export default articlesContext;
+export const ArticlesContext = createContext();
