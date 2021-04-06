@@ -17,7 +17,7 @@ export const ArticlesReducer = (state, action) => {
 		case REMOVE_ALERT:
 			return { ...state, alert: false };
 		case CLEAR_ARTICLES:
-			return { ...state, articles: action.payload };
+			return { ...state, articles: [] };
 		default:
 			return state;
 	}

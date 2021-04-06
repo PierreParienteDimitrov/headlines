@@ -38,7 +38,7 @@ const ArticlesState = (props) => {
 	};
 
 	// Clear Articles
-	const clearArticles = () => dispatch({ type: CLEAR_ARTICLES, payload: [] });
+	const clearArticles = () => dispatch({ type: CLEAR_ARTICLES });
 
 	// Set Alert
 	const setAlert = () => dispatch({ type: SET_ALERT });
