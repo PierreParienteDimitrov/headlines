@@ -8,9 +8,6 @@ import { ArticlesContext } from '../context/articles/articlesContext';
 import ArticlesState from '../context/articles/ArticlesState';
 
 const Browse = () => {
-	// const value = useContext(ArticlesContext);
-	// console.log(value);
-
 	return (
 		<ArticlesState>
 			<IsLoading>
