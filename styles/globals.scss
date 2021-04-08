@@ -1,4 +1,7 @@
 @import './config';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
 	font-family: $primary-font;
