@@ -1,9 +1,15 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { connectToDatabase } from '../utils/mongodb';
-
 import Container from '../components/layouts/Container';
 
 const signIn = ({ allUsers }) => {
+	const router = useRouter();
+
+	// Call this function to refresh props
+	const refreshData = () => router.replace(router.asPath);
+
+	// States
 	const [username, setUsername] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -27,7 +33,7 @@ const signIn = ({ allUsers }) => {
 			body: JSON.stringify(user),
 		});
 
-		window.location.reload();
+		refreshData();
 	};
 
 	return (
