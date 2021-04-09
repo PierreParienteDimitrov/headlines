@@ -12,6 +12,10 @@ const ArticleList = () => {
 		getTopArticles();
 	}, []);
 
+	const like = (e) => {
+		console.log(e.target.value);
+	};
+
 	const IsLoading = () => {
 		if (loading) {
 			return <Spinner />;
@@ -24,6 +28,9 @@ const ArticleList = () => {
 								<div key={index}>
 									<h2>{article.title}</h2>
 									<p>{article.abstract}</p>
+									<button value={article.created_date} onClick={like}>
+										Like
+									</button>
 								</div>
 							);
 						})}
