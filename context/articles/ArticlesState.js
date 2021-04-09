@@ -29,7 +29,7 @@ const ArticlesState = (props) => {
 			};
 
 			const res = await axios.request(options);
-			console.log(res.data.response.docs);
+			// console.log(res.data.response.docs);
 
 			dispatch({ type: SEARCH_ARTICLES, payload: res.data.response.docs });
 		} catch (err) {
