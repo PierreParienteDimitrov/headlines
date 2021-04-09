@@ -1,11 +1,18 @@
-import Carousel from '../components/carousel/Carousel';
+import ArticleList from '../components/article/ArticleList';
+import IsLoading from '../components/isLoading/IsLoading';
+import TopArticleState from '../context/topArticles/TopArticlesState';
 
-const Browse = () => {
+const browse = () => {
 	return (
-		<div>
-			<p>Carousel</p>
-		</div>
+		<TopArticleState>
+			{/* <IsLoading>
+		
+			</IsLoading> */}
+			<div>
+				<ArticleList />
+			</div>
+		</TopArticleState>
 	);
 };
 
-export default Browse;
+export default browse;
