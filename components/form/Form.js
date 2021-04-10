@@ -3,7 +3,7 @@ import { ArticlesContext } from '../../context/articles/articlesContext';
 import Container from '../../components/layouts/Container';
 import ContainerFluid from '../../components/layouts/ContainerFluid';
 import { FiSearch } from 'react-icons/fi';
-import Spinner from '../spinner/Spinner';
+import Spinner from '../spinner';
 
 const Form = () => {
 	const articleContext = useContext(ArticlesContext);
