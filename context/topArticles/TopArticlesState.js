@@ -34,7 +34,7 @@ const TopArticlesState = (props) => {
 
 	// Like Article
 	const likeArticle = async (article) => {
-		console.log(article);
+		// console.log(article);
 	};
 
 	// set loading
