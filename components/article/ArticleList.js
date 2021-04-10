@@ -5,15 +5,15 @@ import Spinner from '../spinner/Spinner';
 const ArticleList = () => {
 	const topArticleContext = useContext(TopArticlesContext);
 
-	const { articles, loading, getTopArticles } = topArticleContext;
+	const { articles, loading, getTopArticles, likeArticle } = topArticleContext;
 	console.log(articles);
 
 	useEffect(async () => {
 		getTopArticles();
 	}, []);
 
-	const like = (e) => {
-		console.log(e.target.value);
+	const like = (article) => {
+		likeArticle(article);
 	};
 
 	const IsLoading = () => {
@@ -28,9 +28,7 @@ const ArticleList = () => {
 								<div key={index}>
 									<h2>{article.title}</h2>
 									<p>{article.abstract}</p>
-									<button value={article.created_date} onClick={like}>
-										Like
-									</button>
+									<button onClick={() => like(article)}>Like</button>
 								</div>
 							);
 						})}

@@ -32,12 +32,22 @@ const TopArticlesState = (props) => {
 		}
 	};
 
+	// Like Article
+	const likeArticle = async (article) => {
+		console.log(article);
+	};
+
 	// set loading
 	const setLoading = () => dispatch({ type: SET_LOADING });
 
 	return (
 		<TopArticlesContext.Provider
-			value={{ articles: state.articles, loading: state.loading, getTopArticles }}
+			value={{
+				articles: state.articles,
+				loading: state.loading,
+				getTopArticles,
+				likeArticle,
+			}}
 		>
 			{props.children}
 		</TopArticlesContext.Provider>

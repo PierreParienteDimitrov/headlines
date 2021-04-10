@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { connectToDatabase } from '../utils/mongodb';
+import { dbConnect, jsonify } from '../utils/dbConnect';
+import User from '../models/User';
 import Container from '../components/layouts/Container';
 
-const signIn = ({ allUsers }) => {
+const signIn = ({ users }) => {
 	const router = useRouter();
 
 	// Call this function to refresh props
@@ -23,6 +24,8 @@ const signIn = ({ allUsers }) => {
 			email: email,
 			password: password,
 		};
+
+		console.log(user);
 
 		const data = await fetch('http://localhost:3000/api/users', {
 			method: 'POST',
@@ -75,10 +78,12 @@ const signIn = ({ allUsers }) => {
 			</form>
 
 			<div>
-				{allUsers.map((user) => {
+				{users.map((user) => {
 					return (
 						<div key={user._id}>
 							<h2>{user.username}</h2>
+							<p>{user.email}</p>
+							<p>{user.password}</p>
 						</div>
 					);
 				})}
@@ -87,14 +92,13 @@ const signIn = ({ allUsers }) => {
 	);
 };
 
-export async function getStaticProps() {
-	const { db } = await connectToDatabase();
-
-	const allUsers = await db.collection('users').find({}).limit(20).toArray();
+export async function getServerSideProps(context) {
+	dbConnect();
+	const users = await User.find({});
 
 	return {
 		props: {
-			allUsers: JSON.parse(JSON.stringify(allUsers)),
+			users: jsonify(users),
 		},
 	};
 }
