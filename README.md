@@ -1,5 +1,5 @@
 # Headlines
-[Link to deployed app](https://headlinesppd.herokuapp.com/browse)
+[Link to deployed app](https://headlines-kappa.vercel.app/)
 
 # Next.js, Tailwind, Sass and Mailchimp connection boilerplate
 
