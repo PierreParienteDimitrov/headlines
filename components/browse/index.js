@@ -40,6 +40,7 @@ const Browse = () => {
 			return (
 				// Carousel Component
 				<Carousel
+					arrows={true}
 					swipeable={true}
 					draggable={false}
 					showDots={false}
@@ -49,7 +50,7 @@ const Browse = () => {
 					keyBoardControl={true}
 					customTransition='all 1s'
 					transitionDuration={1000}
-					containerClass='carousel-container'
+					// containerClass='carousel-container'
 				>
 					{articles &&
 						articles.map((article, index) => {
