@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Footer from '../footer';
 
 const Layout = ({ children }) => {
 	return (
@@ -8,6 +9,7 @@ const Layout = ({ children }) => {
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
 			{children}
+			<Footer />
 		</div>
 	);
 };

@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react';
 import { ArticlesContext } from '../../context/articles/articlesContext';
-import Container from '../../components/layouts/Container';
-import ContainerFluid from '../../components/layouts/ContainerFluid';
+import Container from '../layouts/Container';
+import ContainerFluid from '../layouts/ContainerFluid';
 import { FiSearch } from 'react-icons/fi';
-import Spinner from '../spinner/Spinner';
+import Spinner from '../spinner';
 
-const Form = () => {
+const SearchArticle = () => {
 	const articleContext = useContext(ArticlesContext);
 	// console.log('--------');
 	// console.log(articleContext);
@@ -129,4 +129,4 @@ const Form = () => {
 	);
 };
 
-export default Form;
+export default SearchArticle;

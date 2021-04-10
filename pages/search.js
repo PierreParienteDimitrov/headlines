@@ -1,14 +1,14 @@
-import Form from '../components/form/Form';
+import SearchArticle from '../components/searchArticles';
 import ArticlesState from '../context/articles/ArticlesState';
 
-const Search = () => {
+const search = () => {
 	return (
 		<ArticlesState>
 			<div>
-				<Form />
+				<SearchArticle />
 			</div>
 		</ArticlesState>
 	);
 };
 
-export default Search;
+export default search;

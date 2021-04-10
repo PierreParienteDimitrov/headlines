@@ -1,6 +1,7 @@
 import { useContext, useEffect } from 'react';
 import { TopArticlesContext } from '../../context/topArticles/topArticlesContext';
-import Spinner from '../spinner/Spinner';
+import Article from '../article';
+import Spinner from '../spinner';
 
 const ArticleList = () => {
 	const topArticleContext = useContext(TopArticlesContext);
@@ -24,13 +25,7 @@ const ArticleList = () => {
 				<div>
 					{articles &&
 						articles.map((article, index) => {
-							return (
-								<div key={index}>
-									<h2>{article.title}</h2>
-									<p>{article.abstract}</p>
-									<button onClick={() => like(article)}>Like</button>
-								</div>
-							);
+							return <Article article={article} index={index} />;
 						})}
 				</div>
 			);

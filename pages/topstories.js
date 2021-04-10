@@ -1,11 +1,12 @@
-import ArticleList from '../components/article/ArticleList';
+import ArticleList from '../components/browse/ArticleList';
+import Browse from '../components/browse';
 import TopArticleState from '../context/topArticles/TopArticlesState';
 
 const browse = () => {
 	return (
 		<TopArticleState>
 			<div>
-				<ArticleList />
+				<Browse />
 			</div>
 		</TopArticleState>
 	);
