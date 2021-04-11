@@ -1,22 +1,27 @@
 import { useContext, useEffect } from 'react';
-import axios from 'axios';
 import { TopArticlesContext } from '../../context/topArticles/topArticlesContext';
 import Spinner from '../spinner';
 import Article from '../article';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { jsonify } from '../../utils/dbConnect';
 
 const Browse = ({ data }) => {
 	const topArticleContext = useContext(TopArticlesContext);
 
-	console.log(data);
+	// console.log(data);
 
-	const { articles, loading, getTopArticles, likeArticle } = topArticleContext;
-	console.log(articles);
+	const {
+		topArticles,
+		loading,
+		getTopArticles,
+		likeArticle,
+	} = topArticleContext;
 
-	useEffect(async () => {
-		getTopArticles();
+	console.log(topArticles);
+
+	useEffect(() => {
+		getTopArticles(data);
+		// console.log(topArticles);
 	}, []);
 
 	const responsive = {
@@ -56,9 +61,9 @@ const Browse = ({ data }) => {
 					transitionDuration={1000}
 					// containerClass='carousel-container'
 				>
-					{articles &&
-						articles.map((article, index) => {
-							return <Article key={index} article={article} index={index} />;
+					{topArticles &&
+						topArticles.map((topArticle, index) => {
+							return <Article key={index} topArticle={topArticle} index={index} />;
 						})}
 				</Carousel>
 			);
@@ -74,23 +79,5 @@ const Browse = ({ data }) => {
 		</div>
 	);
 };
-
-// export async function getStaticProps() {
-// 	const options = {
-// 		method: 'GET',
-// 		url: `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.NYT_Key}`,
-// 	};
-
-// 	const res = await fetch(
-// 		`https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.NYT_Key}`
-// 	);
-
-// 	const data = await res.json();
-// 	console.log(res);
-
-// 	return {
-// 		props: { data },
-// 	};
-// }
 
 export default Browse;
