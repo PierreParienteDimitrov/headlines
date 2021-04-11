@@ -5,7 +5,7 @@ import Article from '../article';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-const Browse = ({ data }) => {
+const Browse = () => {
 	const topArticleContext = useContext(TopArticlesContext);
 
 	// console.log(data);
@@ -13,6 +13,7 @@ const Browse = ({ data }) => {
 	const {
 		topArticles,
 		loading,
+		setLoading,
 		getTopArticles,
 		likeArticle,
 	} = topArticleContext;
@@ -21,7 +22,8 @@ const Browse = ({ data }) => {
 
 	// Passing the data to the context when component mounts
 	useEffect(() => {
-		getTopArticles(data);
+		// setLoading();
+		getTopArticles();
 		// console.log(topArticles);
 	}, []);
 

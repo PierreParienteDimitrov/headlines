@@ -13,20 +13,20 @@ const browse = ({ data }) => {
 	);
 };
 
-export const getServerSideProps = async () => {
-	const options = {
-		method: 'GET',
-		url: `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.NYT_Key}`,
-	};
+// export const getStaticProps = async () => {
+// 	const options = {
+// 		method: 'GET',
+// 		url: `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.NYT_Key}`,
+// 	};
 
-	const res = await axios.request(options);
+// 	const res = await axios.request(options);
 
-	const data = await res.data.results;
-	// console.log(data);
+// 	const data = await res.data.results;
+// 	// console.log(data);
 
-	return {
-		props: { data: jsonify(data) },
-	};
-};
+// 	return {
+// 		props: { data: jsonify(data) },
+// 	};
+// };
 
 export default browse;
