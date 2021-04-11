@@ -13,23 +13,27 @@ const TopArticlesState = (props) => {
 	const [state, dispatch] = useReducer(topArticlesReducer, initialState);
 
 	// Get top articles
-	const getTopArticles = async () => {
-		try {
-			setLoading();
-			const options = {
-				method: 'GET',
-				url: `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.NYT_Key}`,
-			};
+	// const getTopArticles = async () => {
+	// 	try {
+	// 		setLoading();
+	// 		const options = {
+	// 			method: 'GET',
+	// 			url: `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.NYT_Key}`,
+	// 		};
 
-			const res = await axios.request(options);
+	// 		const res = await axios.request(options);
 
-			const data = res.data.results;
+	// 		const data = res.data.results;
 
-			dispatch({ type: GET_TOP_ARTICLES, payload: data });
-			// console.log(data);
-		} catch (err) {
-			console.log(err);
-		}
+	// 		dispatch({ type: GET_TOP_ARTICLES, payload: data });
+	// 		// console.log(data);
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// };
+
+	const getTopArticles = (data) => {
+		dispatch({ type: GET_TOP_ARTICLES, payload: data });
 	};
 
 	// Like Article
@@ -43,7 +47,7 @@ const TopArticlesState = (props) => {
 	return (
 		<TopArticlesContext.Provider
 			value={{
-				articles: state.articles,
+				topArticles: state.topArticles,
 				loading: state.loading,
 				getTopArticles,
 				likeArticle,

@@ -5,14 +5,24 @@ import Article from '../article';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-const Browse = () => {
+const Browse = ({ data }) => {
 	const topArticleContext = useContext(TopArticlesContext);
 
-	const { articles, loading, getTopArticles, likeArticle } = topArticleContext;
-	console.log(articles);
+	// console.log(data);
 
-	useEffect(async () => {
-		getTopArticles();
+	const {
+		topArticles,
+		loading,
+		getTopArticles,
+		likeArticle,
+	} = topArticleContext;
+
+	console.log(topArticles);
+
+	// Passing the data to the context when component mounts
+	useEffect(() => {
+		getTopArticles(data);
+		// console.log(topArticles);
 	}, []);
 
 	const responsive = {
@@ -52,9 +62,9 @@ const Browse = () => {
 					transitionDuration={1000}
 					// containerClass='carousel-container'
 				>
-					{articles &&
-						articles.map((article, index) => {
-							return <Article key={index} article={article} index={index} />;
+					{topArticles &&
+						topArticles.map((topArticle, index) => {
+							return <Article key={index} topArticle={topArticle} index={index} />;
 						})}
 				</Carousel>
 			);
