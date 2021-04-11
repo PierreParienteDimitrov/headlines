@@ -19,6 +19,7 @@ const Browse = ({ data }) => {
 
 	console.log(topArticles);
 
+	// Passing the data to the context when component mounts
 	useEffect(() => {
 		getTopArticles(data);
 		// console.log(topArticles);
