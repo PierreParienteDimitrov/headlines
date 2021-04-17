@@ -14,7 +14,7 @@ const Article = ({ index, topArticle }) => {
 					<ul className='flex flex-wrap mb-2'>
 						{topArticle.des_facet.map((el, index) => {
 							return (
-								<div className='mr-1 pb-1'>
+								<div className='mr-1 pb-1' key={index}>
 									<li className='text-xxs uppercase' key={index}>
 										{el} -
 									</li>
