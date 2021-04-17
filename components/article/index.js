@@ -1,7 +1,6 @@
 import React from 'react';
 import ContainerFluid from '../layouts/ContainerFluid';
 import Container from '../layouts/Container';
-import styles from './Article.module.scss';
 
 const Article = ({ index, topArticle }) => {
 	return (

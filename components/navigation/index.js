@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { BiHomeCircle, BiSearchAlt2, BiStar } from 'react-icons/bi';
 import ContainerFluid from '../layouts/ContainerFluid';
-import NavLinks from '../navLinks';
 
 const Navigation = () => {
 	const [active, setActive] = useState({
