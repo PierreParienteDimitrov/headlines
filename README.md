@@ -1,6 +1,8 @@
 # Headlines
 [Link to deployed app](https://headlines-kappa.vercel.app/)
 
+# Description
+
 # Next.js, Tailwind, Sass and Mailchimp connection boilerplate
 
 This is my boilerplate for any new website that uses the following techologies:
