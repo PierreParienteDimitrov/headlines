@@ -29,15 +29,10 @@ const Browse = ({ data }) => {
 
 	return (
 		<div>
-			<div>
-				<h3>Browse</h3>
-			</div>
-			<div>
-				{topArticles &&
-					topArticles.map((topArticle, index) => {
-						return <Article key={index} topArticle={topArticle} index={index} />;
-					})}
-			</div>
+			{topArticles &&
+				topArticles.map((topArticle, index) => {
+					return <Article key={index} topArticle={topArticle} index={index} />;
+				})}
 		</div>
 	);
 };

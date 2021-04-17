@@ -11,8 +11,30 @@ const Article = ({ index, topArticle }) => {
 					<img src={topArticle.multimedia[0].url} alt='' className={`w-full`} />
 				</div>
 				<Container>
+					<ul className='flex flex-wrap mb-2'>
+						{topArticle.des_facet.map((el, index) => {
+							return (
+								<div className='mr-1 pb-1'>
+									<li className='text-xxs uppercase' key={index}>
+										{el} -
+									</li>
+								</div>
+							);
+						})}
+					</ul>
+
 					<h2 className='mb-2'>{topArticle.title}</h2>
 					<p>{topArticle.abstract}</p>
+
+					<div className='mt-6'>
+						<a
+							href={topArticle.url}
+							target='blank'
+							className='text-sm uppercase underline'
+						>
+							Read Full Article
+						</a>
+					</div>
 				</Container>
 			</ContainerFluid>
 

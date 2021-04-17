@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Footer from '../footer';
+import Navigation from '../navigation';
 
 const Layout = ({ children }) => {
 	return (
@@ -8,8 +8,8 @@ const Layout = ({ children }) => {
 				<title>Create Next App</title>
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
+			<Navigation />
 			{children}
-			<Footer />
 		</div>
 	);
 };
