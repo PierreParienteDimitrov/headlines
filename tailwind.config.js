@@ -6,6 +6,14 @@ module.exports = {
 			zIndex: {
 				'-10': '-10',
 			},
+			fontSize: {
+				xxs: [
+					'0.3rem',
+					{
+						letterSpacing: '0.02rem',
+					},
+				],
+			},
 		},
 	},
 	variants: {

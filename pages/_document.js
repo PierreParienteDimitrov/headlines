@@ -10,8 +10,7 @@ class MyDocument extends Document {
 		return (
 			<Html>
 				<Head />
-				<link rel='stylesheet' href='https://use.typekit.net/oju4hxx.css' />
-
+				<link rel='stylesheet' href='https://use.typekit.net/lwm5xvc.css' />
 				<body>
 					<Main />
 					<NextScript />
