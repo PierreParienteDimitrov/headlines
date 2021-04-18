@@ -1,20 +1,23 @@
 import React from 'react';
 import ContainerFluid from '../layouts/ContainerFluid';
 import Container from '../layouts/Container';
+import styles from './Article.module.scss';
 
 const Article = ({ index, topArticle }) => {
 	return (
-		<div key={index} className='mb-16 w-screen'>
-			<Container>
+		<div key={index} className='mb-16 w-screen '>
+			<div
+				className={`w-full md:w-4/12 md:m-auto ${styles.card} ${styles.element2}`}
+			>
 				<div className='mb-4'>
 					<img
 						src={topArticle.multimedia[0].url}
 						alt=''
-						className={`w-full md:w-6/12 md:m-auto`}
+						className={`w-full ${styles.imgRadius}`}
 					/>
 				</div>
 
-				<div className={`w-full md:w-6/12 md:m-auto`}>
+				<div className={`w-full pb-10 px-4`}>
 					<ul className='flex flex-wrap mb-2'>
 						{topArticle.des_facet.map((el, index) => {
 							return (
@@ -30,7 +33,7 @@ const Article = ({ index, topArticle }) => {
 					<h2 className='mb-2'>{topArticle.title}</h2>
 					<p>{topArticle.abstract}</p>
 
-					<div className='mt-6'>
+					<div className='mt-6 flex justify-center align-items'>
 						<a
 							href={topArticle.url}
 							target='blank'
@@ -40,7 +43,7 @@ const Article = ({ index, topArticle }) => {
 						</a>
 					</div>
 				</div>
-			</Container>
+			</div>
 
 			{/* <button onClick={() => like(article)}>Like</button> */}
 		</div>
