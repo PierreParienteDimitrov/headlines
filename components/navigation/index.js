@@ -1,15 +1,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { Links } from './links';
-
-import ContainerFluid from '../layouts/ContainerFluid';
+import Container from '../layouts/Container';
 
 const Navigation = () => {
 	const router = useRouter();
 
 	return (
-		<ContainerFluid>
-			<div className='pt-6 pb-10 px-12'>
+		<Container>
+			<div className='pt-6 pb-10 md:w-6/12 md:m-auto'>
 				<ul className='flex w-full justify-between'>
 					{Links.map((link, index) => {
 						return (
@@ -28,7 +27,7 @@ const Navigation = () => {
 					})}
 				</ul>
 			</div>
-		</ContainerFluid>
+		</Container>
 	);
 };
 

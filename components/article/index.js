@@ -5,11 +5,16 @@ import Container from '../layouts/Container';
 const Article = ({ index, topArticle }) => {
 	return (
 		<div key={index} className='mb-16 w-screen'>
-			<ContainerFluid>
+			<Container>
 				<div className='mb-4'>
-					<img src={topArticle.multimedia[0].url} alt='' className={`w-full`} />
+					<img
+						src={topArticle.multimedia[0].url}
+						alt=''
+						className={`w-full md:w-6/12 md:m-auto`}
+					/>
 				</div>
-				<Container>
+
+				<div className={`w-full md:w-6/12 md:m-auto`}>
 					<ul className='flex flex-wrap mb-2'>
 						{topArticle.des_facet.map((el, index) => {
 							return (
@@ -34,8 +39,8 @@ const Article = ({ index, topArticle }) => {
 							Read Full Article
 						</a>
 					</div>
-				</Container>
-			</ContainerFluid>
+				</div>
+			</Container>
 
 			{/* <button onClick={() => like(article)}>Like</button> */}
 		</div>
