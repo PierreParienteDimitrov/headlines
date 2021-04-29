@@ -11,19 +11,22 @@ const browse = ({ data }) => {
 	);
 };
 
+const sources = 'guardian,ny-times,le-monde';
+
 export const getStaticProps = async () => {
 	const options = {
 		method: 'GET',
-		url: `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.NYT_Key}`,
+		url: `http://api.mediastack.com/v1/news?access_key=${process.env.MEDIASTACK_Key}&sources=${sources}`,
 	};
 
 	const res = await axios.request(options);
 
 	const data = await res.data.results;
-	// console.log(data);
+	console.log(typeof res.data.data);
 
 	return {
-		props: { data: jsonify(data) },
+		props: { data: res.data.data },
+		// props: { data: jsonify(data) },
 	};
 };
 
