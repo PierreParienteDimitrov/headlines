@@ -11,14 +11,14 @@ const Article = ({ index, topArticle }) => {
 			>
 				<div className='mb-4'>
 					<img
-						src={topArticle.multimedia[0].url}
+						src={topArticle.image}
 						alt=''
 						className={`w-full ${styles.imgRadius}`}
 					/>
 				</div>
 
 				<div className={`w-full pb-10 px-4`}>
-					<ul className='flex flex-wrap mb-2'>
+					{/* <ul className='flex flex-wrap mb-2'>
 						{topArticle.des_facet.map((el, index) => {
 							return (
 								<div className='mr-1 pb-1' key={index}>
@@ -28,18 +28,18 @@ const Article = ({ index, topArticle }) => {
 								</div>
 							);
 						})}
-					</ul>
+					</ul> */}
 
 					<h2 className='mb-2'>{topArticle.title}</h2>
-					<p>{topArticle.abstract}</p>
+					<p>{topArticle.description}</p>
 
-					<div className='mt-6 flex justify-center align-items'>
+					<div className='mt-6 flex  align-items'>
 						<a
 							href={topArticle.url}
 							target='blank'
 							className='text-sm uppercase underline'
 						>
-							Read Full Article
+							Read Full Article on {topArticle.source}
 						</a>
 					</div>
 				</div>
